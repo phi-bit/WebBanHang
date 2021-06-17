@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TinTucModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TinTuc">
+    <Key>
+      <PropertyRef Name="IdTin" />
+    </Key>
+    <Property Name="IdTin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDLoai" Type="Int32" Nullable="false" />
+    <Property Name="TieuDeTin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDungTin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TheLoaiTin" Relationship="Self.FK_TinTuc_TheLoaiTin" FromRole="TinTuc" ToRole="TheLoaiTin" />
+  </EntityType>
+  <EntityType Name="TheLoaiTin">
+    <Key>
+      <PropertyRef Name="IDLoai" />
+    </Key>
+    <Property Name="IDLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenTheLoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TinTuc" Relationship="Self.FK_TinTuc_TheLoaiTin" FromRole="TheLoaiTin" ToRole="TinTuc" />
+  </EntityType>
+  <Association Name="FK_TinTuc_TheLoaiTin">
+    <End Role="TheLoaiTin" Type="Self.TheLoaiTin" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TinTuc" Type="Self.TinTuc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TheLoaiTin">
+        <PropertyRef Name="IDLoai" />
+      </Principal>
+      <Dependent Role="TinTuc">
+        <PropertyRef Name="IDLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TintucContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TinTuc" EntityType="Self.TinTuc" />
+    <EntitySet Name="TheLoaiTin" EntityType="Self.TheLoaiTin" />
+    <AssociationSet Name="FK_TinTuc_TheLoaiTin" Association="Self.FK_TinTuc_TheLoaiTin">
+      <End Role="TheLoaiTin" EntitySet="TheLoaiTin" />
+      <End Role="TinTuc" EntitySet="TinTuc" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

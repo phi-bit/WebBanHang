@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<fieldset>
+    <legend>Thông Tin Chi Tiết</legend>
+    <div class="display-label">Id Tin:@Model.IdTin</div>
+    <div class="display-label">
+        Loại Tin:
+        @Model.TheLoaiTin.TenTheLoai
+    </div>
+    <div class="display-label">
+        Tiêu đề tin:
+        @Model.TieuDeTin
+    </div>
+    <div class="display-label">
+        Nội dung tin:
+        @Model.NoiDungTin
+    </div>
+</fieldset> <p>
+    @Html.ActionLink("Xóa", "Delete", new { id = Model.IdTin })
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.IdTin }) |
+    @Html.ActionLink("Quay lại danh sách", "Index", "TinTuc")
+</p>

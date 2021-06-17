@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<table border="1">
+    <tr>
+        <th>
+            ID Tin
+        </th>
+        <th>
+            Loại Tin
+        </th>
+        <th>
+            Tiêu đề tin
+        </th>
+        <th>
+            Nội dung tin
+        </th>
+        <th>
+            Lựa Chọn
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.IdTin
+            </td>
+            <td>
+                @item.TheLoaiTin.TenTheLoai
+            </td>
+            <td>
+                @item.TieuDeTin
+            </td>
+            <td width=300>
+                @item.NoiDungTin
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.IdTin })
+                @Html.ActionLink("Chi Tiết", "Details", new { id = item.IdTin })
+                @Html.ActionLink("Xóa", "Delete", new { id = item.IdTin })
+            </td>
+        </tr>
+    }
+</table> <p> @Html.ActionLink("Tạo Mới", "Create")</p>

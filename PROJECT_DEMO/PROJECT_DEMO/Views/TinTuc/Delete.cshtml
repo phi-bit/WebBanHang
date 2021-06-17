@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+<fieldset>
+    <legend><font color=red>Xoá?</font></legend>
+    <div class="display-label">ID Tin: @Model.IdTin</div>
+    <div class="display-label">Loại Tin: @Model.TheLoaiTin.IDLoai</div>
+    <div class="display-label">Tiêu đề tin:@Model.TieuDeTin</div>
+    <div class="display-label">Nội dung tin:@Model.NoiDungTin</div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Xóa" /> |
+        @Html.ActionLink("Quay lại danh sách", "Index")
+    </p>        }

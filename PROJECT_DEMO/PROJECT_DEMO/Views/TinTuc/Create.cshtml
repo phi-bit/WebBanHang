@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Tạo Mới</legend>
+        <p>
+            Tiêu đề tin:
+            @Html.TextBox("Tieudetin")
+            @ViewData["Loi"]
+        </p>
+        <p>
+            Loại tin :
+            @Html.DropDownList("Loaitin")
+        </p>
+        <p>
+            Nội dung tin:
+            @Html.TextArea("Noidungtin")
+        </p>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>}<div>
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</div>
+

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model PROJECT_DEMO.Models.TinTuc
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Sửa</legend>
+        <p>
+            Tiêu đề tin:
+            @Html.TextBoxFor(m => m.TieuDeTin)
+            @ViewData["Loi"]
+        </p>
+        <p>
+            Loại tin :
+            @Html.DropDownList("LoaiTin")
+            @ViewData["Loi1"]
+        </p>
+        <p>
+            Noi dung tin:
+            @Html.TextBoxFor(m => m.NoiDungTin)
+        </p>
+        <p>
+            <input type="submit" value=Save />
+        </p>
+    </fieldset>}<div> @Html.ActionLink("Quay lại danh sách", "Index", "TinTuc") </div>
